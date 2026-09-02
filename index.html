@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Clock — A Minimal Time Companion</title>
+  <meta name="description" content="A polished, real-time digital clock built with vanilla HTML, CSS and JavaScript. Features 12/24-hour formats and dark/light themes." />
+
+  <!-- Google Fonts: JetBrains Mono for the time display, Manrope for UI text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient backdrop glow, purely decorative -->
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <main class="stage">
+
+    <button
+      id="themeToggle"
+      class="icon-toggle"
+      type="button"
+      aria-label="Switch to light mode"
+      title="Toggle dark / light mode"
+    >
+      <svg id="themeIconMoon" class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20.4 14.7A8.5 8.5 0 0 1 9.3 3.6a.6.6 0 0 0-.77-.75 9.7 9.7 0 1 0 12.6 12.6.6.6 0 0 0-.73-.75Z" fill="currentColor"/>
+      </svg>
+      <svg id="themeIconSun" class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.6" fill="currentColor"/>
+        <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M12 2.5v2.4"/><path d="M12 19.1v2.4"/>
+          <path d="M4.2 4.2l1.7 1.7"/><path d="M18.1 18.1l1.7 1.7"/>
+          <path d="M2.5 12h2.4"/><path d="M19.1 12h2.4"/>
+          <path d="M4.2 19.8l1.7-1.7"/><path d="M18.1 5.9l1.7-1.7"/>
+        </g>
+      </svg>
+    </button>
+
+    <section class="clock-card" aria-label="Current time">
+
+      <p class="eyebrow-date" id="dayLabel">Wednesday</p>
+
+      <div class="time-display" id="timeDisplay" role="timer" aria-live="polite">
+        <span class="digit-group" id="hours">--</span>
+        <span class="colon">:</span>
+        <span class="digit-group" id="minutes">--</span>
+        <span class="colon">:</span>
+        <span class="digit-group" id="seconds">--</span>
+        <span class="meridiem" id="meridiem">AM</span>
+      </div>
+
+      <p class="date-display" id="dateLabel">Loading date…</p>
+
+      <div class="format-toggle" role="group" aria-label="Time format">
+        <button type="button" class="format-btn is-active" id="format12" data-format="12">12-hour</button>
+        <button type="button" class="format-btn" id="format24" data-format="24">24-hour</button>
+      </div>
+
+    </section>
+
+    <p class="footnote">Running on your device's local clock — no server, no tracking.</p>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
